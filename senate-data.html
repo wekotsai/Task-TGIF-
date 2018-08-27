@@ -1,0 +1,98 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <style>
+        .jumbotron {
+            background-color: #ffffff;
+            color: #333;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>TGIF</h2>
+        <div class="text-right">
+            <span class="glyphicon glyphicon-envelope"></span>
+            <a href="mailto:info@tgif.net">info@tgif.net</a>
+        </div>
+    </div>
+    
+    <nav class="navbar navbar-expand-sm navbar-light bg-light">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="home.html">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Congress 113
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="house-data.html">House</a>
+              <a class="dropdown-item" href="senate-data.html">Senate</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+
+    <div class="container">
+        <h2>Senators</h2>
+        <p>First convened in 1789, the composition and powers of the Senate are established in Article One of the U.S. Constitution. Each state is represented by two senators, regardless of population, who serve staggered six-year terms. The Senate has several exclusive powers not granted to the House, including consenting to treaties as a precondition to their ratification and consenting to or confirming appointments of Cabinet secretaries, federal judges, other federal executive officials, military officers, regulatory officials, ambassadors, and other federal uniformed officers, as well as trial of federal officials impeached by the House.</p>
+        
+<!--  Checkbox  -->
+        <ul class="list-unstyled d-flex flex-inline" data-bind="foreach: filteredParty">
+            <li>Republican<input type="checkbox" onchange="handleChange()" value="R" class ="party" id="rep"/></li>
+            <li>Democrat<input type="checkbox" onchange="handleChange()" value="D" class ="party" id="dem"/></li>
+            <li>Independent<input type="checkbox" onchange="handleChange()" value="I" class ="party" id="indi"/>
+            </li>
+        </ul>
+<!--  Checkbox  -->    
+       
+        <table id="senate-data">
+            <thead>
+                <tr>
+                    <td>Full name</td>
+                    <td>Party</td>
+                    <td>State</td>
+                    <td>Seniority</td>
+                    <td>Percentage</td>
+                </tr>
+            </thead>
+        </table>
+    </div>
+
+    <!-- Footer -->
+    <footer class="page-footer font-small mdb-color lighten-3 pt-4">
+        <!-- Footer Links -->
+        <div class="container text-center text-md-left">
+            <!-- Copyright -->
+            <div class="footer-copyright text-center py-3">
+                © 2016 Copyright | All Rights Reserved
+                <!--  if you want to add a link <a class="dark-grey-text" href="https://mdbootstrap.com/bootstrap-tutorial/"> MDBootstrap.com</a>-->
+            </div>
+        </div>
+    </footer>
+    <!-- Footer -->
+
+    <script src="pro-congress-113-senate.js"></script>
+    <script src="senate-data.js"></script>
+
+</body>
+
+</html>
