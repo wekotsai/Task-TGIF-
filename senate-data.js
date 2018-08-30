@@ -41,13 +41,36 @@ handleChange();
 //    document.getElementById("result").innerHTML = JSON.stringify(array);
 //}
 
+//1. all states with duplicates
+var allStates = data.results[0].members.map(oneMember => oneMember.state);
+console.log(allStates);
+//2. remove duplicates
+var allStatesNoDupes = [];
+allStates.forEach(oneState =>{
+    if(!allStatesNoDupes.includes(oneState)){
+        allStatesNoDupes.push(oneState);
+    }
+});
+
+var selector = document.getElementById("stateSelect");
+
+allStatesNoDupes.sort();
+allStatesNoDupes.forEach(aState =>{
+    
+    var newOption = document.createElement("option");
+    console.log('one done')
+    newOption.innerHTML = aState;
+    selector.append(newOption);
+})
+
+
 function handleChange() {
     
     myTBody.innerHTML = "";
 
-    var myChecked = Array.from(document.querySelectorAll('input.party:checked'));
+    let myChecked = Array.from(document.querySelectorAll('input.party:checked'));
 
-    var myCheckedValues = [];
+    let myCheckedValues = [];
     myChecked.forEach(checkbox => {
         myCheckedValues.push(checkbox.value);
     });
@@ -64,11 +87,9 @@ function handleChange() {
             var myTr = document.createElement("tr");
             var names = [member.first_name, member.middle_name, member.last_name];
             var full_name = names.join(" ");
-
             var url = member.url;
-            var name_with_link = "<a href=\"" + url + "\">" + full_name + "</a>";
 
-            myTr.insertCell().innerHTML = name_with_link;
+            myTr.insertCell().innerHTML = full_name.link(url);
             myTr.insertCell().innerHTML = member.party;
             myTr.insertCell().innerHTML = member.state;
             myTr.insertCell().innerHTML = member.seniority;
