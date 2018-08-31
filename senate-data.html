@@ -187,10 +187,45 @@
             </div>
         </div>
     </footer>
-    <!-- Footer -->
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+    <script>
+        
+//        $.getJSON("https://jsonplaceholder.typicode.com/todos", function(myData){
+//            console.log(myData);
+//        });
+        
+        fetch("https://jsonplaceholder.typicode.com/todos")
+        .then(json => json.json())
+        .then(data => {
+            
+            
+            
+        })
+        
 
-    <script src="pro-congress-113-senate.js"></script>
+        
+        function printData(){
+            for(var i = 0; i < data.length; i++){
+                console.log("Hello");
+            }
+        }
+    
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    </script>
+    <!-- Footer -->
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+<!--    <script src="pro-congress-113-senate.js"></script>-->
     <script src="senate-data.js"></script>
+    
 
 </body>
 

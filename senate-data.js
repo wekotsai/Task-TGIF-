@@ -1,4 +1,4 @@
-console.log(data.results[0].members);
+//console.log(data.results[0].members);
 //dropdown filter
 /* When the user clicks on the button,
 toggle between hiding and showing the dropdown content */
@@ -43,7 +43,7 @@ handleChange();
 
 //1. all states with duplicates
 var allStates = data.results[0].members.map(oneMember => oneMember.state);
-console.log(allStates);
+//console.log(allStates);
 //2. remove duplicates
 var allStatesNoDupes = [];
 allStates.forEach(oneState =>{
@@ -58,7 +58,7 @@ allStatesNoDupes.sort();
 allStatesNoDupes.forEach(aState =>{
     
     var newOption = document.createElement("option");
-    console.log('one done')
+    //console.log('one done')
     newOption.innerHTML = aState;
     selector.append(newOption);
 })

@@ -73,7 +73,7 @@ function sortVotes(){
 //    console.log(members.map(a => a.missed_votes))
     let tenPrc = Math.round(members.length/10);
 //    console.log(tenPrc);
-    leastMissedVotes = members.slice(0, 11);
+    leastMissedVotes = members.slice(0, 45);
     statistics.mostEngaged = leastMissedVotes;
 //    console.log(leastMissedVotes.length)  
 
@@ -81,7 +81,7 @@ function sortVotes(){
     //from the highest
     members.sort((a, b) => b.missed_votes - a.missed_votes);
 //    console.log(members.map(a => a.missed_votes))
-    mostMissedVotes = members.slice(0, 11);
+    mostMissedVotes = members.slice(0, 45);
     statistics.leastEngaged = mostMissedVotes;
 }
 
