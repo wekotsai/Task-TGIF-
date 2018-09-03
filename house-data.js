@@ -1,7 +1,7 @@
 console.log(data.results[0].members);
 
 var myTable = document.querySelector("#house-data");
-//        console.log(myTable);
+
 myTable.classList.add("table", "table-hover");
 
 var myTBody = document.createElement("tbody");
