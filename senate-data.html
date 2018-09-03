@@ -105,7 +105,7 @@
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
-                   
+    
                     <li>
                         <h2>TGIF&nbsp;</h2>
                     </li>
@@ -184,6 +184,32 @@
 
             <br>
 
+        <!-- 1st attempt with Vue -->
+          <div class="container" id="app">   
+          <table class="table table-hover" id="senate-data">
+              <thead>
+                    <tr class="table-primary">
+                        <td>Full name</td>
+                        <td>Party</td>
+                        <td>State</td>
+                        <td>Seniority</td>
+                        <td>Percentage</td>
+                    </tr>
+              </thead>
+              <tbody>
+                <tr v-for="row in myVueMembers">
+                  <td>{{row.first_name}} {{row.middle_name}} {{row.last_name}}</td>
+                  <td>{{row.party}}</td>
+                  <td>{{row.state}}</td>
+                  <td>{{row.seniority}}</td>
+                  <td>{{row.votes_with_party_pct + '%'}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div> 
+
+          
+<!--  original table
             <table id="senate-data">
                 <thead>
                     <tr class="table-primary">
@@ -196,6 +222,7 @@
                 </thead>
             </table>
         </div>
+-->
 
         <!-- Footer -->
         <footer class="page-footer font-small text-secondary p-3 mb-2 lighten-3 bg-light pt-4">

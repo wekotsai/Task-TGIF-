@@ -21,6 +21,7 @@ fetch("https://api.propublica.org/congress/v1/113/senate/members.json", {
     
         data = jsonData;
          
+        myFirstVueObject(jsonData.results[0].members)
         handleChange();
 
         //1. all states with duplicates
@@ -45,44 +46,56 @@ fetch("https://api.propublica.org/congress/v1/113/senate/members.json", {
 })
 //});
 
-function handleChange() {
+function myFirstVueObject(myData){
+    
+    console.log(myData);
+    
+    new Vue({
+      el: '#app',
+      data: {
+          myVueMembers: myData,
+      }
+    })
+}
 
-            myTBody.innerHTML = "";
-
-            let myChecked = Array.from(document.querySelectorAll('input.party:checked'));
-
-            let myCheckedValues = [];
-            myChecked.forEach(checkbox => {
-                myCheckedValues.push(checkbox.value);
-            });
-
-            let selector = document.getElementById("stateSelect");
-
-
-            data.results[0].members.forEach(member => {
-
-                let partyFilter = myCheckedValues.includes(member.party) || myCheckedValues.length == 0;
-                let statesFilter = (member.state == selector.value) || selector.value == "all";
-
-                if (partyFilter && statesFilter) {
-                    var myTr = document.createElement("tr");
-                    var names = [member.first_name, member.middle_name, member.last_name];
-                    var full_name = names.join(" ");
-                    var url = member.url;
-
-                    myTr.insertCell().innerHTML = full_name.link(url);
-                    myTr.insertCell().innerHTML = member.party;
-                    myTr.insertCell().innerHTML = member.state;
-                    myTr.insertCell().innerHTML = member.seniority;
-                    myTr.insertCell().innerHTML = member.votes_with_party_pct + '%';
-                    myTBody.append(myTr);
-                }
-            });
-
-            myTable.append(myTBody);
-
-
-        }
+//function handleChange() {
+//
+//            myTBody.innerHTML = "";
+//
+//            let myChecked = Array.from(document.querySelectorAll('input.party:checked'));
+//
+//            let myCheckedValues = [];
+//            myChecked.forEach(checkbox => {
+//                myCheckedValues.push(checkbox.value);
+//            });
+//
+//            let selector = document.getElementById("stateSelect");
+//
+//
+//            data.results[0].members.forEach(member => {
+//
+//                let partyFilter = myCheckedValues.includes(member.party) || myCheckedValues.length == 0;
+//                let statesFilter = (member.state == selector.value) || selector.value == "all";
+//
+//                if (partyFilter && statesFilter) {
+//                    var myTr = document.createElement("tr");
+//                    var names = [member.first_name, member.middle_name, member.last_name];
+//                    var full_name = names.join(" ");
+//                    var url = member.url;
+//
+//                    myTr.insertCell().innerHTML = full_name.link(url);
+//                    myTr.insertCell().innerHTML = member.party;
+//                    myTr.insertCell().innerHTML = member.state;
+//                    myTr.insertCell().innerHTML = member.seniority;
+//                    myTr.insertCell().innerHTML = member.votes_with_party_pct + '%';
+//                    myTBody.append(myTr);
+//                }
+//            });
+//
+//            myTable.append(myTBody);
+//
+//
+//        }
 
     
 //function filterByParty() {
