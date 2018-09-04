@@ -105,7 +105,7 @@
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
-    
+
                     <li>
                         <h2>TGIF&nbsp;</h2>
                     </li>
@@ -163,7 +163,7 @@
             <h2>Senators</h2>
             <p>First convened in 1789, the composition and powers of the Senate are established in Article One of the U.S. Constitution. Each state is represented by two senators, regardless of population, who serve staggered six-year terms. The Senate has several exclusive powers not granted to the House, including consenting to treaties as a precondition to their ratification and consenting to or confirming appointments of Cabinet secretaries, federal judges, other federal executive officials, military officers, regulatory officials, ambassadors, and other federal uniformed officers, as well as trial of federal officials impeached by the House.</p>
 
-            <!--  Checkbox  -->
+            <!--  original checkbox  -->
             <!--
         <ul class="list-unstyled d-flex flex-inline" data-bind="foreach: filteredParty">
             <li>Republican<input type="checkbox" onchange="handleChange()" value="R" class="party" id="rep" /></li>
@@ -175,41 +175,58 @@
             <div id="filters">
 
 
+                <!-- original filter
                 Republican <input type="checkbox" onchange="handleChange()" value="R" class="party" id="rep" /> Democrat <input type="checkbox" onchange="handleChange()" value="D" class="party" id="dem" /> Independent <input type="checkbox" onchange="handleChange()" value="I" class="party" id="indi" /> State:
                 <select name="state" id="stateSelect" onchange="handleChange()">
                <option value="all" selected>all</option>
 
         </select>
+-->
             </div>
 
             <br>
 
-        <!-- 1st attempt with Vue -->
-          <div class="container" id="app">   
-          <table class="table table-hover" id="senate-data">
-              <thead>
-                    <tr class="table-primary">
-                        <td>Full name</td>
-                        <td>Party</td>
-                        <td>State</td>
-                        <td>Seniority</td>
-                        <td>Percentage</td>
-                    </tr>
-              </thead>
-              <tbody>
-                <tr v-for="row in myVueMembers">
-                  <td>{{row.first_name}} {{row.middle_name}} {{row.last_name}}</td>
-                  <td>{{row.party}}</td>
-                  <td>{{row.state}}</td>
-                  <td>{{row.seniority}}</td>
-                  <td>{{row.votes_with_party_pct + '%'}}</td>
-                </tr>
-              </tbody>
-            </table>
-          </div> 
+            <!-- 1st Vue table -->
+            <div class="container" id="app">
+                <div id='new-checkbox'>
+                    <input @change="partyFilter" type="checkbox" id="rep" value="R" v-model="checkedNames">
+                    <label for="republican">Republican</label>
+                    <input @change="partyFilter" type="checkbox" id="dem" value="D" v-model="checkedNames">
+                    <label for="democrat">Democrat</label>
+                    <input @change="partyFilter" type="checkbox" id="indie" value="I" v-model="checkedNames">
+                    <label for="independent ">Independent </label> State:
+                    <select @change="partyFilter" name="state" id="stateSelect" v-model="stateValue">
+                        <option selected>all</option>
+                        <option v-for="item in stateNameArray">{{item}}</option>
 
-          
-<!--  original table
+        </select>
+                    <!--                <p>Test: {{checkedNames}}</p>-->
+                </div>
+
+                <table class="table table-hover" id="senate-data">
+                    <thead>
+                        <tr class="table-primary table-fixed">
+                            <td>Full name</td>
+                            <td>Party</td>
+                            <td>State</td>
+                            <td>Seniority</td>
+                            <td>Percentage</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="row in myVueMembers">
+                            <td>{{row.first_name}} {{row.middle_name}} {{row.last_name}}</td>
+                            <td>{{row.party}}</td>
+                            <td>{{row.state}}</td>
+                            <td>{{row.seniority}}</td>
+                            <td>{{row.votes_with_party_pct + '%'}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+
+            <!--  original table
             <table id="senate-data">
                 <thead>
                     <tr class="table-primary">
@@ -221,8 +238,9 @@
                     </tr>
                 </thead>
             </table>
+ -->
         </div>
--->
+
 
         <!-- Footer -->
         <footer class="page-footer font-small text-secondary p-3 mb-2 lighten-3 bg-light pt-4">
