@@ -1,25 +1,40 @@
-function main() { 
+onload = (function(){
     
-    let myTable = document.querySelector("#senate-data");
-    myTable.classList.add("table", "table-hover");
-
-    let myTBody = document.createElement("tbody");
-
-    fetch("https://api.propublica.org/congress/v1/113/senate/members.json", {
-            headers: new Headers({
+    var myVar = setTimeout(showPage, 3000);
+    
+    if(document.title.includes("Senate")){
+       var url = "https://api.propublica.org/congress/v1/113/senate/members.json"
+    } else {
+       var url = "https://api.propublica.org/congress/v1/113/house/members.json"
+    }
+    
+    fetch(url, {
+        headers: new Headers({
                 "X-API-Key": "vtWikQYFzHHmeKCeyC4McaUxPPDQGDGuSxjOOLFc"
             })
         })
-    
         .then(response => response.json())
         .then(jsonData => {
 
-            myFirstVueObject(jsonData.results[0].members)
+            if(document.title.includes("Data")){
+                myFirstVueObject(jsonData.results[0].members);
+            } else {
+                myStatistics(jsonData);
+            }
         })
+    
+
+})();
+
+function showPage() {
+    document.getElementById("loader").style.display = "none";
+    document.getElementById("myDiv").style.display = "block";
 }
 
-
 function myFirstVueObject(myData) {
+    
+    let myTable = document.querySelector("#senate-data");
+    myTable.classList.add("table", "table-hover");
 
     console.log(myData);
 
@@ -40,7 +55,7 @@ function myFirstVueObject(myData) {
                 partyFilter: function () {
         // use 'backupMembers' to store the originl array 
                     this.myVueMembers = this.backupMembers.filter(member => {
-        // use || to restore the table after unchecking
+        // use || to restore the table after unchecking boxes
                         let partyFilter = this.checkedNames.includes(member.party) || this.checkedNames.length == 0;
                         let stateFilter = this.stateValue == member.state || this.stateValue == 'all';
 

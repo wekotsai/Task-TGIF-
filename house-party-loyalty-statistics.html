@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="styles.css">
     <title>House Loyalty</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -39,7 +40,10 @@
     </style>
 </head>
 
-<body>
+<body onload="myFunction()" style="margin:0;">
+    
+    <div id="loader"></div>
+    <div style="display:none;" id="myDiv" class="animate-bottom">
 
 
     <nav class="navbar navbar-expand-sm navbar-light p-3 mb-3 bg-primary text-white">
@@ -171,7 +175,7 @@
             </div>
         </div>
     </div>
-
+    </div>
     <script src="pro-congress-113-house.js"></script>
     <script src="house-party-loyalty-statistics.js">
 

@@ -125,7 +125,7 @@
                     </thead>
                     <tbody>
                         <tr v-for="row in myVueMembers">
-                            <td>{{row.first_name}} {{row.middle_name}} {{row.last_name}}</td>
+                            <td><a v-bind:href="row.url">{{row.first_name}} {{row.middle_name}} {{row.last_name}}</a></td>
                             <td>{{row.party}}</td>
                             <td>{{row.state}}</td>
                             <td>{{row.seniority}}</td>
@@ -151,6 +151,7 @@
 
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+<!--
     <script>
         var myVar;
 
@@ -165,9 +166,10 @@
         }
 
     </script>
+-->
     <!-- Footer -->
     <script src="https://unpkg.com/vue/dist/vue.js"></script>
-    <script src="house-data.js"></script>
+    <script src="data.js"></script>
 
 </body>
 
