@@ -68,6 +68,7 @@ function myFirstVueObject(myData) {
                     dupsArray.forEach(stateName => {
                         if(!this.stateNameArray.includes(stateName)){
                             this.stateNameArray.push(stateName);
+                            this.stateNameArray.sort();
                         }
                     })
                 }
