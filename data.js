@@ -1,6 +1,6 @@
 onload = (function(){
     
-    var myVar = setTimeout(showPage, 3000);
+//    var myVar = setTimeout(showPage, 3000);
     
     if(document.title.includes("Senate")){
        var url = "https://api.propublica.org/congress/v1/113/senate/members.json"
@@ -15,12 +15,12 @@ onload = (function(){
         })
         .then(response => response.json())
         .then(jsonData => {
-
+            showPage();
             if(document.title.includes("Data")){
                 myFirstVueObject(jsonData.results[0].members);
             } else {
                 myStatistics(jsonData);
-            }
+            } 
         })
     
 
